@@ -10,3 +10,4 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [tplstatemachine](https://github.com/aaronps/experiments-from-the-past/tree/tplstatemachine) c++, 2012, experiment on using templates to write less boilerplate on state machines
 * [mysha1](https://github.com/aaronps/experiments-from-the-past/tree/mysha1) c++, 2012, functions to calculate sha1 and the websocket handshake thing, i think.
 * [aujsc](https://github.com/aaronps/experiments-from-the-past/tree/aujsc) c++, 2012, another unfinished javascript compiler
+* [audiolam](https://github.com/aaronps/experiments-from-the-past/tree/audiolam) c, 2012, audio loader and mixer, only load 8 bit wavs, mix them and play over sdl.
