@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1319273480 source:/home/krom/program/c++/vcap/src/VideoInput.cpp
+	"VideoInput.hpp"
+	<stdint.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<fcntl.h>
+	<unistd.h>
+	<errno.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/time.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<linux/videodev2.h>
+
+1321100536 /home/krom/program/c++/vcap/src/VideoInput.hpp
+	<string>
+	<vector>
+
+1319273416 source:/home/krom/program/c++/vcap/src/main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+	"SDL/SDL.h"
+	<stdint.h>
+	"VideoInput.hpp"
+
