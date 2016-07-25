@@ -8,3 +8,4 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [simple-thread](https://github.com/aaronps/experiments-from-the-past/tree/simple-thread) c++, 2012, threads like in Java
 * [base64](https://github.com/aaronps/experiments-from-the-past/tree/base64) c++, 2012, experiment on converting to base64
 * [tplstatemachine](https://github.com/aaronps/experiments-from-the-past/tree/tplstatemachine) c++, 2012, experiment on using templates to write less boilerplate on state machines
+* [mysha1](https://github.com/aaronps/experiments-from-the-past/tree/mysha1) c++, 2012, functions to calculate sha1 and the websocket handshake thing, i think.
