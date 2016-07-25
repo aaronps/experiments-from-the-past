@@ -1,5 +1,7 @@
 # experiments-from-the-past
-Repository holding my old experiments, multiple programming languages. To clone a single project:
+Repository holding my old experiments, multiple programming languages. *I haven't check if these compile without errors currently*
+
+To clone a single project:
 ```shell
 $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --branch <branch_name_here> --single-branch <destination_folder_here>
 ```
