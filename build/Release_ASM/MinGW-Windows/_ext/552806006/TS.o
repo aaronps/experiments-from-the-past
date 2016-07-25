@@ -1,0 +1,292 @@
+	.file	"TS.cpp"
+	.text
+	.p2align 2,,3
+	.def	___tcf_0;	.scl	3;	.type	32;	.endef
+___tcf_0:
+LFB1027:
+	.cfi_startproc
+	movl	$__ZStL8__ioinit, %ecx
+	jmp	__ZNSt8ios_base4InitD1Ev
+	.cfi_endproc
+LFE1027:
+	.p2align 2,,3
+	.def	__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.2;	.scl	3;	.type	32;	.endef
+__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.2:
+LFB1031:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	(%eax), %edx
+	movl	-12(%edx), %ecx
+	addl	%eax, %ecx
+	movl	20(%ecx), %edx
+	orl	$1, %edx
+	movl	%edx, (%esp)
+	call	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate
+	.cfi_def_cfa_offset 28
+	pushl	%eax
+	.cfi_def_cfa_offset 32
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1031:
+	.section .rdata,"dr"
+LC0:
+	.ascii "Func A\12\0"
+LC1:
+	.ascii "Func B\12\0"
+LC2:
+	.ascii "Func C\12\0"
+LC3:
+	.ascii "Func D\12\0"
+LC4:
+	.ascii "Func E\12\0"
+LC5:
+	.ascii "Func F\12\0"
+LC6:
+	.ascii "Func G\12\0"
+LC7:
+	.ascii "Func H\12\0"
+LC8:
+	.ascii "Func I\12\0"
+LC9:
+	.ascii "Func J\12\0"
+LC10:
+	.ascii "Func K\12\0"
+LC11:
+	.ascii "Func L\12\0"
+LC12:
+	.ascii "Func M\12\0"
+LC13:
+	.ascii "Func N\12\0"
+LC14:
+	.ascii "Func O\12\0"
+LC15:
+	.ascii "Func P\12\0"
+LC16:
+	.ascii "Func Q\12\0"
+	.text
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN2TS3runEv
+	.def	__ZN2TS3runEv;	.scl	2;	.type	32;	.endef
+__ZN2TS3runEv:
+LFB1005:
+	.cfi_startproc
+	pushl	%ebx
+	.cfi_def_cfa_offset 8
+	.cfi_offset 3, -8
+	subl	$24, %esp
+	.cfi_def_cfa_offset 32
+	movl	%ecx, %ebx
+	movl	(%ecx), %eax
+	testl	%eax, %eax
+	jne	L39
+	movl	$7, 8(%esp)
+	movl	$LC0, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$1, (%ebx)
+L4:
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 2,,3
+L39:
+	.cfi_restore_state
+	cmpl	$1, %eax
+	je	L57
+	cmpl	$2, %eax
+	je	L58
+	cmpl	$3, %eax
+	je	L59
+	cmpl	$4, %eax
+	je	L60
+	cmpl	$5, %eax
+	je	L61
+	cmpl	$6, %eax
+	je	L62
+	cmpl	$7, %eax
+	je	L63
+	cmpl	$8, %eax
+	je	L64
+	cmpl	$9, %eax
+	je	L65
+	cmpl	$10, %eax
+	je	L66
+	cmpl	$11, %eax
+	je	L67
+	cmpl	$12, %eax
+	je	L68
+	cmpl	$13, %eax
+	je	L69
+	cmpl	$14, %eax
+	je	L70
+	cmpl	$15, %eax
+	je	L71
+	cmpl	$16, %eax
+	jne	L4
+	movl	$7, 8(%esp)
+	movl	$LC16, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$0, (%ebx)
+	jmp	L4
+	.p2align 2,,3
+L57:
+	movl	$7, 8(%esp)
+	movl	$LC1, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$2, (%ebx)
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 2,,3
+L59:
+	.cfi_restore_state
+	movl	$7, 8(%esp)
+	movl	$LC3, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$4, (%ebx)
+	jmp	L4
+	.p2align 2,,3
+L58:
+	movl	$7, 8(%esp)
+	movl	$LC2, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$3, (%ebx)
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	ret
+	.p2align 2,,3
+L60:
+	.cfi_restore_state
+	movl	$7, 8(%esp)
+	movl	$LC4, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$5, (%ebx)
+	jmp	L4
+	.p2align 2,,3
+L62:
+	movl	$7, 8(%esp)
+	movl	$LC6, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$7, (%ebx)
+	jmp	L4
+	.p2align 2,,3
+L61:
+	movl	$7, 8(%esp)
+	movl	$LC5, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$6, (%ebx)
+	jmp	L4
+L63:
+	movl	$7, 8(%esp)
+	movl	$LC7, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$8, (%ebx)
+	jmp	L4
+L64:
+	movl	$7, 8(%esp)
+	movl	$LC8, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$9, (%ebx)
+	jmp	L4
+L65:
+	movl	$7, 8(%esp)
+	movl	$LC9, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$10, (%ebx)
+	jmp	L4
+L66:
+	movl	$7, 8(%esp)
+	movl	$LC10, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$11, (%ebx)
+	jmp	L4
+L67:
+	movl	$7, 8(%esp)
+	movl	$LC11, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$12, (%ebx)
+	jmp	L4
+L68:
+	movl	$7, 8(%esp)
+	movl	$LC12, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$13, (%ebx)
+	jmp	L4
+L69:
+	movl	$7, 8(%esp)
+	movl	$LC13, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$14, (%ebx)
+	jmp	L4
+L70:
+	movl	$7, 8(%esp)
+	movl	$LC14, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$15, (%ebx)
+	jmp	L4
+L71:
+	movl	$7, 8(%esp)
+	movl	$LC15, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	$16, (%ebx)
+	jmp	L4
+	.cfi_endproc
+LFE1005:
+	.section	.text.startup,"x"
+	.p2align 2,,3
+	.def	__GLOBAL__sub_I__ZN2TS3runEv;	.scl	3;	.type	32;	.endef
+__GLOBAL__sub_I__ZN2TS3runEv:
+LFB1028:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	$__ZStL8__ioinit, %ecx
+	call	__ZNSt8ios_base4InitC1Ev
+	movl	$___tcf_0, (%esp)
+	call	_atexit
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1028:
+	.section	.ctors,"w"
+	.align 4
+	.long	__GLOBAL__sub_I__ZN2TS3runEv
+.lcomm __ZStL8__ioinit,1,1
+	.def	__ZNSt8ios_base4InitD1Ev;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate;	.scl	2;	.type	32;	.endef
+	.def	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt8ios_base4InitC1Ev;	.scl	2;	.type	32;	.endef
+	.def	_atexit;	.scl	2;	.type	32;	.endef

@@ -1,0 +1,51 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+CND_BUILDDIR=build
+CND_DISTDIR=dist
+# Debug configuration
+CND_PLATFORM_Debug=MinGW-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
+CND_ARTIFACT_NAME_Debug=tplstate
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/tplstate
+CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
+CND_PACKAGE_NAME_Debug=tplstate.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/tplstate.tar
+# Release configuration
+CND_PLATFORM_Release=MinGW-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
+CND_ARTIFACT_NAME_Release=tplstate
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/tplstate
+CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
+CND_PACKAGE_NAME_Release=tplstate.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/tplstate.tar
+# Debug_ASM configuration
+CND_PLATFORM_Debug_ASM=MinGW-Windows
+CND_ARTIFACT_DIR_Debug_ASM=dist/Debug_ASM/MinGW-Windows
+CND_ARTIFACT_NAME_Debug_ASM=tplstate
+CND_ARTIFACT_PATH_Debug_ASM=dist/Debug_ASM/MinGW-Windows/tplstate
+CND_PACKAGE_DIR_Debug_ASM=dist/Debug_ASM/MinGW-Windows/package
+CND_PACKAGE_NAME_Debug_ASM=tplstate.tar
+CND_PACKAGE_PATH_Debug_ASM=dist/Debug_ASM/MinGW-Windows/package/tplstate.tar
+# Release_ASM configuration
+CND_PLATFORM_Release_ASM=MinGW-Windows
+CND_ARTIFACT_DIR_Release_ASM=dist/Release_ASM/MinGW-Windows
+CND_ARTIFACT_NAME_Release_ASM=tplstate
+CND_ARTIFACT_PATH_Release_ASM=dist/Release_ASM/MinGW-Windows/tplstate
+CND_PACKAGE_DIR_Release_ASM=dist/Release_ASM/MinGW-Windows/package
+CND_PACKAGE_NAME_Release_ASM=tplstate.tar
+CND_PACKAGE_PATH_Release_ASM=dist/Release_ASM/MinGW-Windows/package/tplstate.tar
+#
+# include compiler specific variables
+#
+# dmake command
+ROOT:sh = test -f nbproject/private/Makefile-variables.mk || \
+	(mkdir -p nbproject/private && touch nbproject/private/Makefile-variables.mk)
+#
+# gmake command
+.PHONY: $(shell test -f nbproject/private/Makefile-variables.mk || (mkdir -p nbproject/private && touch nbproject/private/Makefile-variables.mk))
+#
+include nbproject/private/Makefile-variables.mk

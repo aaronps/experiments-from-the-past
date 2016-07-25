@@ -1,0 +1,261 @@
+	.file	"PTest.cpp"
+	.text
+	.p2align 2,,3
+	.def	___tcf_0;	.scl	3;	.type	32;	.endef
+___tcf_0:
+LFB999:
+	.cfi_startproc
+	movl	$__ZStL8__ioinit, %ecx
+	jmp	__ZNSt8ios_base4InitD1Ev
+	.cfi_endproc
+LFE999:
+	.p2align 2,,3
+	.def	__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.1;	.scl	3;	.type	32;	.endef
+__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.1:
+LFB1002:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	(%eax), %edx
+	movl	-12(%edx), %ecx
+	addl	%eax, %ecx
+	movl	20(%ecx), %edx
+	orl	$1, %edx
+	movl	%edx, (%esp)
+	call	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate
+	.cfi_def_cfa_offset 28
+	pushl	%eax
+	.cfi_def_cfa_offset 32
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1002:
+	.section .rdata,"dr"
+LC0:
+	.ascii "called b\0"
+	.text
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN5PTest6func_bEv
+	.def	__ZN5PTest6func_bEv;	.scl	2;	.type	32;	.endef
+__ZN5PTest6func_bEv:
+LFB988:
+	.cfi_startproc
+	pushl	%ebx
+	.cfi_def_cfa_offset 8
+	.cfi_offset 3, -8
+	subl	$24, %esp
+	.cfi_def_cfa_offset 32
+	movl	$8, 8(%esp)
+	movl	$LC0, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	__ZSt4cout, %eax
+	movl	-12(%eax), %eax
+	movl	__ZSt4cout+124(%eax), %ebx
+	testl	%ebx, %ebx
+	je	L10
+	cmpb	$0, 28(%ebx)
+	je	L6
+	movb	39(%ebx), %al
+L7:
+	movsbl	%al, %eax
+	movl	%eax, (%esp)
+	movl	$__ZSt4cout, %ecx
+	call	__ZNSo3putEc
+	.cfi_def_cfa_offset 28
+	pushl	%edx
+	.cfi_def_cfa_offset 32
+	movl	%eax, %ecx
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	jmp	__ZNSo5flushEv
+	.p2align 2,,3
+L6:
+	.cfi_restore_state
+	movl	%ebx, %ecx
+	call	__ZNKSt5ctypeIcE13_M_widen_initEv
+	movl	(%ebx), %eax
+	movl	$10, (%esp)
+	movl	%ebx, %ecx
+	call	*24(%eax)
+	.cfi_def_cfa_offset 28
+	pushl	%ecx
+	.cfi_def_cfa_offset 32
+	jmp	L7
+L10:
+	call	__ZSt16__throw_bad_castv
+	.cfi_endproc
+LFE988:
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN5PTestC2Ev
+	.def	__ZN5PTestC2Ev;	.scl	2;	.type	32;	.endef
+__ZN5PTestC2Ev:
+LFB985:
+	.cfi_startproc
+	movl	$__ZN5PTest6func_bEv, 4(%ecx)
+	movl	$0, 8(%ecx)
+	ret
+	.cfi_endproc
+LFE985:
+	.globl	__ZN5PTestC1Ev
+	.def	__ZN5PTestC1Ev;	.scl	2;	.type	32;	.endef
+	.set	__ZN5PTestC1Ev,__ZN5PTestC2Ev
+	.section .rdata,"dr"
+LC1:
+	.ascii "called a\0"
+	.text
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN5PTest6func_aEv
+	.def	__ZN5PTest6func_aEv;	.scl	2;	.type	32;	.endef
+__ZN5PTest6func_aEv:
+LFB987:
+	.cfi_startproc
+	pushl	%ebx
+	.cfi_def_cfa_offset 8
+	.cfi_offset 3, -8
+	subl	$24, %esp
+	.cfi_def_cfa_offset 32
+	movl	$8, 8(%esp)
+	movl	$LC1, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	__ZSt4cout, %eax
+	movl	-12(%eax), %eax
+	movl	__ZSt4cout+124(%eax), %ebx
+	testl	%ebx, %ebx
+	je	L17
+	cmpb	$0, 28(%ebx)
+	je	L14
+	movb	39(%ebx), %al
+L15:
+	movsbl	%al, %eax
+	movl	%eax, (%esp)
+	movl	$__ZSt4cout, %ecx
+	call	__ZNSo3putEc
+	.cfi_def_cfa_offset 28
+	pushl	%ebx
+	.cfi_def_cfa_offset 32
+	movl	%eax, %ecx
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	jmp	__ZNSo5flushEv
+	.p2align 2,,3
+L14:
+	.cfi_restore_state
+	movl	%ebx, %ecx
+	call	__ZNKSt5ctypeIcE13_M_widen_initEv
+	movl	(%ebx), %eax
+	movl	$10, (%esp)
+	movl	%ebx, %ecx
+	call	*24(%eax)
+	.cfi_def_cfa_offset 28
+	pushl	%edx
+	.cfi_def_cfa_offset 32
+	jmp	L15
+L17:
+	call	__ZSt16__throw_bad_castv
+	.cfi_endproc
+LFE987:
+	.section .rdata,"dr"
+LC2:
+	.ascii "this is nothing\0"
+	.text
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN5PTest7nothingEv
+	.def	__ZN5PTest7nothingEv;	.scl	2;	.type	32;	.endef
+__ZN5PTest7nothingEv:
+LFB989:
+	.cfi_startproc
+	pushl	%ebx
+	.cfi_def_cfa_offset 8
+	.cfi_offset 3, -8
+	subl	$24, %esp
+	.cfi_def_cfa_offset 32
+	movl	$15, 8(%esp)
+	movl	$LC2, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	__ZSt4cout, %eax
+	movl	-12(%eax), %eax
+	movl	__ZSt4cout+124(%eax), %ebx
+	testl	%ebx, %ebx
+	je	L23
+	cmpb	$0, 28(%ebx)
+	je	L20
+	movb	39(%ebx), %al
+L21:
+	movsbl	%al, %eax
+	movl	%eax, (%esp)
+	movl	$__ZSt4cout, %ecx
+	call	__ZNSo3putEc
+	.cfi_def_cfa_offset 28
+	pushl	%ecx
+	.cfi_def_cfa_offset 32
+	movl	%eax, %ecx
+	addl	$24, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 8
+	popl	%ebx
+	.cfi_restore 3
+	.cfi_def_cfa_offset 4
+	jmp	__ZNSo5flushEv
+	.p2align 2,,3
+L20:
+	.cfi_restore_state
+	movl	%ebx, %ecx
+	call	__ZNKSt5ctypeIcE13_M_widen_initEv
+	movl	(%ebx), %eax
+	movl	$10, (%esp)
+	movl	%ebx, %ecx
+	call	*24(%eax)
+	.cfi_def_cfa_offset 28
+	pushl	%ebx
+	.cfi_def_cfa_offset 32
+	jmp	L21
+L23:
+	call	__ZSt16__throw_bad_castv
+	.cfi_endproc
+LFE989:
+	.section	.text.startup,"x"
+	.p2align 2,,3
+	.def	__GLOBAL__sub_I__ZN5PTestC2Ev;	.scl	3;	.type	32;	.endef
+__GLOBAL__sub_I__ZN5PTestC2Ev:
+LFB1000:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	$__ZStL8__ioinit, %ecx
+	call	__ZNSt8ios_base4InitC1Ev
+	movl	$___tcf_0, (%esp)
+	call	_atexit
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1000:
+	.section	.ctors,"w"
+	.align 4
+	.long	__GLOBAL__sub_I__ZN5PTestC2Ev
+.lcomm __ZStL8__ioinit,1,1
+	.def	__ZNSt8ios_base4InitD1Ev;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate;	.scl	2;	.type	32;	.endef
+	.def	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i;	.scl	2;	.type	32;	.endef
+	.def	__ZNSo3putEc;	.scl	2;	.type	32;	.endef
+	.def	__ZNSo5flushEv;	.scl	2;	.type	32;	.endef
+	.def	__ZNKSt5ctypeIcE13_M_widen_initEv;	.scl	2;	.type	32;	.endef
+	.def	__ZSt16__throw_bad_castv;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt8ios_base4InitC1Ev;	.scl	2;	.type	32;	.endef
+	.def	_atexit;	.scl	2;	.type	32;	.endef

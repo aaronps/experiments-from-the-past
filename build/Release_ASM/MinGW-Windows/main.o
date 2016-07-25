@@ -1,0 +1,378 @@
+	.file	"main.cpp"
+	.text
+	.p2align 2,,3
+	.def	___tcf_0;	.scl	3;	.type	32;	.endef
+___tcf_0:
+LFB1043:
+	.cfi_startproc
+	movl	$__ZStL8__ioinit, %ecx
+	jmp	__ZNSt8ios_base4InitD1Ev
+	.cfi_endproc
+LFE1043:
+	.p2align 2,,3
+	.def	__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.1;	.scl	3;	.type	32;	.endef
+__ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.part.1:
+LFB1046:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	(%eax), %edx
+	movl	-12(%edx), %ecx
+	addl	%eax, %ecx
+	movl	20(%ecx), %edx
+	orl	$1, %edx
+	movl	%edx, (%esp)
+	call	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate
+	.cfi_def_cfa_offset 28
+	pushl	%eax
+	.cfi_def_cfa_offset 32
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1046:
+	.section .rdata,"dr"
+LC0:
+	.ascii "Func A\12\0"
+LC1:
+	.ascii "Func B\12\0"
+LC2:
+	.ascii "Func C\12\0"
+LC3:
+	.ascii "Func D\12\0"
+LC4:
+	.ascii "Func E\12\0"
+LC5:
+	.ascii "Func F\12\0"
+LC6:
+	.ascii "Func G\12\0"
+LC7:
+	.ascii "Func H\12\0"
+LC8:
+	.ascii "Func I\12\0"
+LC9:
+	.ascii "Func J\12\0"
+LC10:
+	.ascii "Func K\12\0"
+LC11:
+	.ascii "Func L\12\0"
+LC12:
+	.ascii "Func M\12\0"
+LC13:
+	.ascii "Func N\12\0"
+LC14:
+	.ascii "Func O\12\0"
+LC15:
+	.ascii "Func P\12\0"
+LC16:
+	.ascii "Func Q\12\0"
+	.text
+	.align 2
+	.p2align 2,,3
+	.def	__ZN8StateMan7gswitchILNS_6States4EnumE0EEEvS2_.isra.20;	.scl	3;	.type	32;	.endef
+__ZN8StateMan7gswitchILNS_6States4EnumE0EEEvS2_.isra.20:
+LFB1065:
+	.cfi_startproc
+	subl	$44, %esp
+	.cfi_def_cfa_offset 48
+	movl	(%ecx), %eax
+	testl	%eax, %eax
+	je	L26
+	cmpl	$1, %eax
+	je	L27
+	cmpl	$2, %eax
+	je	L28
+	cmpl	$3, %eax
+	je	L29
+	cmpl	$4, %eax
+	je	L30
+	cmpl	$5, %eax
+	je	L31
+	cmpl	$6, %eax
+	je	L32
+	cmpl	$7, %eax
+	je	L33
+	cmpl	$8, %eax
+	je	L34
+	cmpl	$9, %eax
+	je	L35
+	cmpl	$10, %eax
+	je	L36
+	cmpl	$11, %eax
+	je	L37
+	cmpl	$12, %eax
+	je	L38
+	cmpl	$13, %eax
+	je	L39
+	cmpl	$14, %eax
+	je	L40
+	cmpl	$15, %eax
+	je	L41
+	cmpl	$16, %eax
+	je	L42
+	cmpl	$17, %eax
+	je	L43
+	cmpl	$18, %eax
+	jne	L4
+	movl	$7, 8(%esp)
+	movl	$LC16, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$0, (%ecx)
+	jmp	L4
+L26:
+	movl	$7, 8(%esp)
+	movl	$LC0, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$3, (%ecx)
+L4:
+	addl	$44, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 4
+	ret
+L27:
+	.cfi_restore_state
+	addl	$44, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 4
+	jmp	__ZN8StateMan10state_funcILNS_6States4EnumE1EEEvv
+L28:
+	.cfi_restore_state
+	addl	$44, %esp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 4
+	jmp	__ZN8StateMan10state_funcILNS_6States4EnumE2EEEvv
+L29:
+	.cfi_restore_state
+	movl	$7, 8(%esp)
+	movl	$LC1, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$4, (%ecx)
+	jmp	L4
+L30:
+	movl	$7, 8(%esp)
+	movl	$LC2, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$5, (%ecx)
+	jmp	L4
+L31:
+	movl	$7, 8(%esp)
+	movl	$LC3, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$6, (%ecx)
+	jmp	L4
+L32:
+	movl	$7, 8(%esp)
+	movl	$LC4, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$7, (%ecx)
+	jmp	L4
+L38:
+	movl	$7, 8(%esp)
+	movl	$LC10, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$13, (%ecx)
+	jmp	L4
+L33:
+	movl	$7, 8(%esp)
+	movl	$LC5, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$8, (%ecx)
+	jmp	L4
+L34:
+	movl	$7, 8(%esp)
+	movl	$LC6, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$9, (%ecx)
+	jmp	L4
+L35:
+	movl	$7, 8(%esp)
+	movl	$LC7, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$10, (%ecx)
+	jmp	L4
+L36:
+	movl	$7, 8(%esp)
+	movl	$LC8, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$11, (%ecx)
+	jmp	L4
+L37:
+	movl	$7, 8(%esp)
+	movl	$LC9, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$12, (%ecx)
+	jmp	L4
+L39:
+	movl	$7, 8(%esp)
+	movl	$LC11, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$14, (%ecx)
+	jmp	L4
+L40:
+	movl	$7, 8(%esp)
+	movl	$LC12, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$15, (%ecx)
+	jmp	L4
+L41:
+	movl	$7, 8(%esp)
+	movl	$LC13, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$16, (%ecx)
+	jmp	L4
+L42:
+	movl	$7, 8(%esp)
+	movl	$LC14, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$17, (%ecx)
+	jmp	L4
+L43:
+	movl	$7, 8(%esp)
+	movl	$LC15, 4(%esp)
+	movl	$__ZSt4cout, (%esp)
+	movl	%ecx, 28(%esp)
+	call	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i
+	movl	28(%esp), %ecx
+	movl	$18, (%ecx)
+	jmp	L4
+	.cfi_endproc
+LFE1065:
+	.align 2
+	.p2align 2,,3
+	.globl	__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_
+	.def	__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_;	.scl	2;	.type	32;	.endef
+__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_:
+LFB1017:
+	.cfi_startproc
+	ret	$4
+	.cfi_endproc
+LFE1017:
+	.def	___main;	.scl	2;	.type	32;	.endef
+	.section	.text.startup,"x"
+	.p2align 2,,3
+	.globl	_main
+	.def	_main;	.scl	2;	.type	32;	.endef
+_main:
+LFB1019:
+	.cfi_startproc
+	pushl	%ebp
+	.cfi_def_cfa_offset 8
+	.cfi_offset 5, -8
+	movl	%esp, %ebp
+	.cfi_def_cfa_register 5
+	pushl	%ebx
+	andl	$-16, %esp
+	subl	$32, %esp
+	.cfi_offset 3, -12
+	call	___main
+	movl	$0, (%esp)
+	call	_time
+	movl	%eax, (%esp)
+	call	_srand
+	movl	$0, 28(%esp)
+	call	_rand
+	movl	$19, %ebx
+	cltd
+	idivl	%ebx
+	movl	%edx, 28(%esp)
+	leal	28(%esp), %ecx
+	call	__ZN8StateMan7gswitchILNS_6States4EnumE0EEEvS2_.isra.20
+	call	_rand
+	cltd
+	idivl	%ebx
+	movl	%edx, 28(%esp)
+	leal	28(%esp), %ecx
+	call	__ZN8StateMan7gswitchILNS_6States4EnumE0EEEvS2_.isra.20
+	call	_rand
+	cltd
+	idivl	%ebx
+	movl	%edx, 28(%esp)
+	leal	28(%esp), %ecx
+	call	__ZN8StateMan7gswitchILNS_6States4EnumE0EEEvS2_.isra.20
+	xorl	%eax, %eax
+	movl	-4(%ebp), %ebx
+	leave
+	.cfi_restore 5
+	.cfi_restore 3
+	.cfi_def_cfa 4, 4
+	ret
+	.cfi_endproc
+LFE1019:
+	.p2align 2,,3
+	.def	__GLOBAL__sub_I__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_;	.scl	3;	.type	32;	.endef
+__GLOBAL__sub_I__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_:
+LFB1044:
+	.cfi_startproc
+	subl	$28, %esp
+	.cfi_def_cfa_offset 32
+	movl	$__ZStL8__ioinit, %ecx
+	call	__ZNSt8ios_base4InitC1Ev
+	movl	$___tcf_0, (%esp)
+	call	_atexit
+	addl	$28, %esp
+	.cfi_def_cfa_offset 4
+	ret
+	.cfi_endproc
+LFE1044:
+	.section	.ctors,"w"
+	.align 4
+	.long	__GLOBAL__sub_I__ZN8StateMan7gswitchILNS_6States4EnumE19EEEvS2_
+.lcomm __ZStL8__ioinit,1,1
+	.def	__ZNSt8ios_base4InitD1Ev;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate;	.scl	2;	.type	32;	.endef
+	.def	__ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_i;	.scl	2;	.type	32;	.endef
+	.def	__ZN8StateMan10state_funcILNS_6States4EnumE1EEEvv;	.scl	2;	.type	32;	.endef
+	.def	__ZN8StateMan10state_funcILNS_6States4EnumE2EEEvv;	.scl	2;	.type	32;	.endef
+	.def	_time;	.scl	2;	.type	32;	.endef
+	.def	_srand;	.scl	2;	.type	32;	.endef
+	.def	_rand;	.scl	2;	.type	32;	.endef
+	.def	__ZNSt8ios_base4InitC1Ev;	.scl	2;	.type	32;	.endef
+	.def	_atexit;	.scl	2;	.type	32;	.endef
