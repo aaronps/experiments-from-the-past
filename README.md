@@ -6,6 +6,7 @@ To clone a single project:
 $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --branch <branch_name_here> --single-branch <destination_folder_here>
 ```
 
+* [minsignal](https://github.com/aaronps/experiments-from-the-past/tree/minsignal) c++, 2011(maybe), very minimal callback/signal class
 * [linux-video-capture](https://github.com/aaronps/experiments-from-the-past/tree/linux-video-capture) c++, 2011, video capture and algorithms experiment
 * [simple-thread](https://github.com/aaronps/experiments-from-the-past/tree/simple-thread) c++, 2012, threads like in Java
 * [base64](https://github.com/aaronps/experiments-from-the-past/tree/base64) c++, 2012, experiment on converting to base64
