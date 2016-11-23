@@ -1,0 +1,3 @@
+# rtracker - Unstarted realtime location tracker
+
+Doesn't really do anything it is just a basic skeleton. Maybe should try doing it in Erlang, must be very simple...
