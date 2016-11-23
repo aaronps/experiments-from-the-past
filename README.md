@@ -19,3 +19,4 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [audiolam](https://github.com/aaronps/experiments-from-the-past/tree/audiolam) c, 2012, audio loader and mixer, only load 8 bit wavs, mix them and play over sdl.
 * [recttest](https://github.com/aaronps/experiments-from-the-past/tree/recttest) c++, 2013, class of rect classes
 * [ccollections](https://github.com/aaronps/experiments-from-the-past/tree/ccollections) c, 2014, simple ObjArray and PtrArray collections
+* [simplelog](https://github.com/aaronps/experiments-from-the-past/tree/simplelog) c, 2014, very simple log function for C, with nice dateformat
