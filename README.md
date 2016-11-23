@@ -7,6 +7,7 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 ```
 
 * [interposer](https://github.com/aaronps/experiments-from-the-past/tree/interposer) c, 2006, very minimal shared library hijack for linux
+* [old-puzzle](https://github.com/aaronps/experiments-from-the-past/tree/old-puzzle) c, 2006, mini puzzle game using sdl
 * [minsignal](https://github.com/aaronps/experiments-from-the-past/tree/minsignal) c++, 2011(maybe), very minimal callback/signal class
 * [linux-video-capture](https://github.com/aaronps/experiments-from-the-past/tree/linux-video-capture) c++, 2011, video capture and algorithms experiment
 * [simple-thread](https://github.com/aaronps/experiments-from-the-past/tree/simple-thread) c++, 2012, threads like in Java
