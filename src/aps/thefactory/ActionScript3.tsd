@@ -1,0 +1,70 @@
+; --------------------------------------------------------
+; Tile Studio Definition file for use with ActionScript3
+; --------------------------------------------------------
+
+#tileset
+#tilebitmap images\\<TileSetIdentifier>TS.png 256
+#end tilebitmap
+
+#file <TileSetIdentifier>TileSet.as
+package aps.thefactory 
+{
+\timport flash.geom.Rectangle;
+\timport flash.display.Bitmap;
+\timport flash.display.BitmapData;
+
+\tpublic class <TileSetIdentifier>TileSet
+\t{
+\t\t[Embed(source = "images/<TileSetIdentifier>TS.png")]
+\t\tprivate static var <TileSetIdentifier>TS:Class;
+\t\tpublic static var <TileSetIdentifier>Image:Bitmap = new <TileSetIdentifier>TS();
+
+\t\tpublic static const TileCount:int = <TileCount>;
+\t\tpublic static const TileWidth:int = <TileWidth>;
+\t\tpublic static const TileHeight:int = <TileHeight>;
+\t\tpublic static var TileRects:Array = new Array();
+
+\t\tpublic static function Init():void
+\t\t{
+\t\t\tvar r:Rectangle = new Rectangle (0, 0, TileWidth, TileHeight );
+\t\t\tTileRects.push( r.clone() ); // for 0
+\t\t\tTileRects.push( r.clone() ); // for 1
+\t\t\tfor ( var n:int = 1; n \< TileCount; ++n )
+\t\t\t{
+\t\t\t\tr.x += TileWidth;
+\t\t\t\tif ( r.x >= <TileSetIdentifier>Image.bitmapData.width )
+\t\t\t\t{
+\t\t\t\t\tr.x = 0;
+\t\t\t\t\tr.y += TileHeight;
+\t\t\t\t}
+\t\t\t\tTileRects.push( r.clone() );
+\t\t\t}
+\t\t}
+#map
+\t\tpublic static const Map<MapIdentifier>Width:int = <MapWidth>;
+\t\tpublic static const Map<MapIdentifier>Height:int = <MapHeight>;
+\t\tpublic static const Map<MapIdentifier>:Array = [
+#mapdata  "\n\t\t\t[ "  ", "  ", "  " ],\n\t\t\t[ "  " ]\n\t\t\t];"
+<TileNumber>
+#end mapdata
+
+\t\tpublic static const Map<MapIdentifier>Codes:Array = [
+#mapdata  "\n\t\t\t[ "  ", "  ", "  " ],\n\t\t\t[ "  " ]\n\t\t\t];"
+<MapCode>
+#end mapdata
+
+\t\tpublic static const Map<MapIdentifier>Bounds:Array = [
+#mapdata  "\n\t\t\t[ "  ", "  ", "  " ],\n\t\t\t[ "  " ]\n\t\t\t];"
+<Bounds>
+#end mapdata
+
+
+#end map
+\t}
+}
+
+#end file
+
+#end tileset
+
+; --------------------------------------------------------
