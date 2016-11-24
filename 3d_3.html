@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>3D test 3</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="G.js"></script>
+<script type="text/javascript">
+
+var _canvas = null;
+var ctx = null;
+
+var sleep_time = 50;
+
+var move_speed = 1.0;
+
+var go_up = false;
+var go_down = false;
+var go_left = false;
+var go_right = false;
+var go_front = false;
+var go_back = false;
+
+var rotate_up = false;
+var rotate_down = false;
+var rotate_left = false;
+var rotate_right = false;
+var rotate_front = false;
+var rotate_back = false;
+
+
+var view = new G.View(640, 480);
+
+var wall_data = G.createRectangle(1, 20, 50);
+wall_data.movePoints(0.5, 10, 25);
+var wall_data2 = G.createRectangle(20, 1, 50);
+wall_data2.movePoints(10, 0.5, 25);
+
+var wall_1 = new G.SceneElement(wall_data, new G.Vector(20,0,50));
+var wall_2 = new G.SceneElement(wall_data, new G.Vector(0,0,50));
+var wall_2b = new G.SceneElement(wall_data, new G.Vector(0,0,100));
+var wall_3 = new G.SceneElement(wall_data2, new G.Vector(-30,19,50));
+var wall_4 = new G.SceneElement(wall_data2, new G.Vector(0,0,50));
+
+var scene = new G.Scene();
+
+scene.addElement(wall_1);
+scene.addElement(wall_2);
+scene.addElement(wall_2b);
+scene.addElement(wall_3);
+scene.addElement(wall_4);
+
+function draw_faces(obj)
+{
+    var faces = obj.visible_faces;
+    var points = obj.screen_pixel;
+    
+    var segment = 0;
+    
+    var face;
+    var max_f = obj.num_visible_faces;
+    
+    var colors =
+    [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff",
+        "#ffff00",
+        "#707070",
+        "#70ff70",
+    ];
+    
+    var face_segments;
+    
+    
+    for ( var f = 0; f < max_f; ++f)
+    {
+        face = faces[f];
+        
+        face_segments = face.length;
+        ctx.beginPath();
+        //ctx.strokeStyle = colors[f%colors.length];
+        ctx.fillStyle = colors[f%colors.length];
+        ctx.moveTo(points[face[3]][0], points[face[3]][1]);
+        ctx.lineTo(points[face[0]][0], points[face[0]][1])
+        ctx.lineTo(points[face[1]][0], points[face[1]][1])
+        ctx.lineTo(points[face[2]][0], points[face[2]][1])
+        ctx.lineTo(points[face[3]][0], points[face[3]][1])
+        //for ( segment = 1; segment < face_segments; ++segment )
+        //{
+        //    ctx.lineTo(points[face[segment]][0], points[face[segment]][1])
+        //}
+        //ctx.stroke();
+        ctx.fill();
+        
+        
+        
+      
+    }
+}
+
+function set_all_visible(obj)
+{
+    var faces = obj.data.faces;
+    var visible_faces = obj.visible_faces;
+    var num_visible_faces = 0;
+    
+    var face;
+    var max_f = faces.length;
+    for ( var f = 0; f < max_f; ++f )
+    {
+        face = faces[f];
+        visible_faces[num_visible_faces++] = face;
+    }
+    
+    obj.num_visible_faces = num_visible_faces;
+}
+
+function backface_culling(obj)
+{
+    var faces = obj.data.faces;
+    var visible_faces = obj.visible_faces;
+    var num_visible_faces = 0;
+    
+    var face;
+    var max_f = faces.length;
+    for ( var f = 0; f < max_f; ++f )
+    {
+        face = faces[f];
+        
+        var r = G.Vector.DotProduct(scene.camera.normal, obj.data.normals[f]);
+        if ( r >= 0 )
+        {
+			visible_faces[num_visible_faces++] = face;
+		}
+    }
+    
+    obj.num_visible_faces = num_visible_faces;
+}
+
+function timely_run()
+{
+    var fullCircle = 2 * Math.PI;
+    
+    
+    handle_moves();
+    
+	scene.calc_transformations();
+	scene.project(view);
+    
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0,0,640,480);
+    
+    for ( var n = scene.num_elements; n--; )
+    {
+        var co = scene.elements[n];
+
+        //calc_visibility(co);
+        
+        backface_culling(co);
+        
+        //set_all_visible(co);
+
+        draw_faces(co);
+    }
+    
+    window.setTimeout(timely_run, sleep_time);
+}
+
+function handle_moves()
+{
+	if ( go_down )
+	{
+		scene.camera.loc.y += move_speed;
+	}
+	
+	if ( go_up)
+	{
+		scene.camera.loc.y -= move_speed;
+	}
+	
+	if ( go_left )
+	{
+		scene.camera.loc.x += move_speed;
+	}
+	
+	if ( go_right)
+	{
+		scene.camera.loc.x -= move_speed;
+	}
+	
+	if ( go_back )
+	{
+		scene.camera.loc.z += move_speed;
+	}
+	
+	if ( go_front)
+	{
+		scene.camera.loc.z -= move_speed;
+	}
+	
+	if ( rotate_up )
+	{
+		scene.camera.angle[0] += 0.02;
+	}
+
+	if ( rotate_down )
+	{
+		scene.camera.angle[0] -= 0.02;
+	}
+	
+	if ( rotate_left )
+	{
+		scene.camera.angle[1] += 0.02;
+	}
+
+	if ( rotate_right )
+	{
+		scene.camera.angle[1] -= 0.02;
+	}
+	
+	if ( rotate_front )
+	{
+		scene.camera.angle[2] += 0.02;
+	}
+
+	if ( rotate_back )
+	{
+		scene.camera.angle[2] -= 0.02;
+	}
+}
+
+function do_start()
+{
+    _canvas = document.getElementById("c");
+    ctx = _canvas.getContext("2d");
+    
+    
+    window.setTimeout(timely_run, 200);
+    
+}
+
+</script>
+  </head>
+  <body onload="do_start()">
+  <form>
+    <label>camera</label>
+    <label>x<input type="text" size="7" value="0.0" onchange="scene.camera.loc.x = parseFloat(this.value)"/></label>
+    <label>y<input type="text" size="7" value="0.0" onchange="scene.camera.loc.y = parseFloat(this.value)"/></label>
+    <label>z<input type="text" size="7" value="0.0" onchange="scene.camera.loc.z = parseFloat(this.value)"/></label>
+    <label>xa<input type="text" size="7" value="0.0" onchange="scene.camera.angle[0] = parseFloat(this.value)"/></label>
+    <label>ya<input type="text" size="7" value="0.0" onchange="scene.camera.angle[1] = parseFloat(this.value)"/></label>
+    <label>za<input type="text" size="7" value="0.0" onchange="scene.camera.angle[2] = parseFloat(this.value)"/></label>
+    <input type="button" value="up" onmousedown="go_up=true" onmouseup="go_up=false" onmouseout="go_up=false"/>
+    <input type="button" value="down" onmousedown="go_down=true" onmouseup="go_down=false" onmouseout="go_down=false"/>
+    <input type="button" value="left" onmousedown="go_left=true" onmouseup="go_left=false" onmouseout="go_left=false"/>
+    <input type="button" value="right" onmousedown="go_right=true" onmouseup="go_right=false" onmouseout="go_right=false"/>
+    <input type="button" value="front" onmousedown="go_front=true" onmouseup="go_front=false" onmouseout="go_front=false"/>
+    <input type="button" value="back" onmousedown="go_back=true" onmouseup="go_back=false" onmouseout="go_back=false"/>
+    <input type="button" value="rup" onmousedown="rotate_up=true" onmouseup="rotate_up=false" onmouseout="rotate_up=false"/>
+    <input type="button" value="rdown" onmousedown="rotate_down=true" onmouseup="rotate_down=false" onmouseout="rotate_down=false"/>
+    <input type="button" value="rleft" onmousedown="rotate_left=true" onmouseup="rotate_left=false" onmouseout="rotate_left=false"/>
+    <input type="button" value="rright" onmousedown="rotate_right=true" onmouseup="rotate_right=false" onmouseout="rotate_right=false"/>
+    <input type="button" value="rfront" onmousedown="rotate_front=true" onmouseup="rotate_front=false" onmouseout="rotate_front=false"/>
+    <input type="button" value="rback" onmousedown="rotate_back=true" onmouseup="rotate_back=false" onmouseout="rotate_back=false"/>
+  </form>
+  <canvas id="c" width="640" height="480"></canvas>
+  </body>
+</html>

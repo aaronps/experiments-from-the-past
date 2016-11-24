@@ -1,0 +1,759 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Canvas Speed</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+
+var top_value = 10000000;
+var num_test_retry = 1;
+
+var _sleep_time = 100;
+
+var time_before_launch = 10;
+
+var cur_test = 0;
+
+var _canvas = null;
+var ctx = null;
+
+var testid = 0; // first test to run
+var testtry = 0;
+
+function add_test(test_name, init_value, loop_code, inloop_code )
+{
+	var str = 'tests.push(\n{\n\tname:"' + test_name + '_' + loop_code +'",\n\ttimes:[], average:0,\n\t'
+		+ 'func:function()\n\t{\n\t\tvar _i = Date.now();\n\t\tvar n = ' + init_value + ';\n\t\t'
+		+ loop_code + '\n\t\t{\n\t\t\t' + inloop_code + ';\n\t\t}\n\t\treturn Date.now()-_i;\n\t}\n})';
+
+//	alert (str);
+
+	eval(str);
+}
+
+//eval('tests.push({ name:"first", times:[], average:0,func:function() { var _i = Date.now(); var n = top_value; while ( --n > 0 ){console.log(n);} return Date.now()-_i; } })')
+/*
+add_test("whiledown pre ge 0",    "top_value",   "while ( --n >= 0 )",  "console.log(n)" );
+add_test("whiledown pre ne -1",   "top_value",   "while ( --n != -1 )", "console.log(n)" );
+add_test("whiledown pre g -1",    "top_value",   "while ( --n > -1 )",  "console.log(n)" );
+
+add_test("whiledown pos ge 1",    "top_value",   "while ( n-- >= 1 )",  "console.log(n)" );
+add_test("whiledown pos ne 0",    "top_value",   "while ( n-- != 0 )",  "console.log(n)" );
+add_test("whiledown pos g 0",     "top_value",   "while ( n-- > 0 )",   "console.log(n)" );
+
+add_test("whiledown preL ge 1",   "top_value",   "while ( n >= 1 )",   "console.log(n); --n" );
+add_test("whiledown preL ne 0",   "top_value",   "while ( n != 0 )",   "console.log(n); --n" );
+add_test("whiledown preL g 0",    "top_value",   "while ( n > 0 )",    "console.log(n); --n" );
+
+add_test("whiledown posL ge 1",   "top_value",   "while ( n var objs = [ cub, cub2, lin_1, lin_2, lin_3, tri];
+>= 1 )",   "console.log(n); n--" );
+add_test("whiledown posL ne 0",   "top_value",   "while ( n != 0 )",   "console.log(n); n--" );
+add_test("whiledown posL g 0",    "top_value",   "while ( n > 0 )",    "console.log(n); n--" );
+
+add_test("whiledown resL ge 1",   "top_value",   "while ( n >= 1 )",   "console.log(n); n-=1" );
+add_test("whiledown resL ne 0",   "top_value",   "while ( n != 0 )",   "console.log(n); n-=1" );
+add_test("whiledown resL g 0",    "top_value",   "while ( n > 0 )",    "console.log(n); n-=1" );
+*/
+
+var tests = [];
+
+add_test("whiledown pre ge 0",    "top_value",   "while ( --n >= 0 )",  "" );
+add_test("whiledown pre ne -1",   "top_value",   "while ( --n != -1 )", "" );
+add_test("whiledown pre ne -1",   "top_value",   "while ( n-- )", "" );
+add_test("whiledown pre g -1",    "top_value",   "while ( --n > -1 )",  "" );
+
+add_test("whileup",    "0; var locvar=top_value",    "while ( ++n <= locvar )",  "" );
+add_test("whileup",    "-1; var locvar=top_value",   "while ( ++n != locvar )",  "" );
+add_test("whileup",    "-1; var locvar=top_value",   "while ( ++n < locvar )",   "" );
+
+add_test("whileup",    "0; var locvar=top_value",    "while ( n++ < locvar )",  "" );
+
+
+/*
+add_test("whiledown pos ge 1",    "top_value",   "while ( n-- >= 1 )",  "" );
+add_test("whiledown pos ne 0",    "top_value",   "while ( n-- != 0 )",  "" );
+add_test("whiledown pos g 0",     "top_value",   "while ( n-- > 0 )",   "" );
+
+add_test("whiledown preL ge 1",   "top_value",   "while ( n >= 1 )",   "--n" );
+add_test("whiledown preL ne 0",   "top_value",   "while ( n != 0 )",   "--n" );
+add_test("whiledown preL g 0",    "top_value",   "while ( n > 0 )",    "--n" );
+
+add_test("whiledown posL ge 1",   "top_value",   "while ( n >= 1 )",   "n--" );
+add_test("whiledown posL ne 0",   "top_value",   "while ( n != 0 )",   "n--" );
+add_test("whiledown posL g 0",    "top_value",   "while ( n > 0 )",    "n--" );
+
+add_test("whiledown resL ge 1",   "top_value",   "while ( n >= 1 )",   "n-=1" );
+add_test("whiledown resL ne 0",   "top_value",   "while ( n != 0 )",   "n-=1" );
+add_test("whiledown resL g 0",    "top_value",   "while ( n > 0 )",    "n-=1" );
+*/
+
+/*
+add_test("whileup",    "0",    "while ( ++n <= top_value )",  "" );
+add_test("whileup",    "-1",   "while ( ++n != top_value )",  "" );
+add_test("whileup",    "-1",   "while ( ++n < top_value )",   "" );
+
+add_test("whileup",    "0; var locvar=top_value",    "while ( ++n <= locvar )",  "" );
+add_test("whileup",    "-1; var locvar=top_value",   "while ( ++n != locvar )",  "" );
+add_test("whileup",    "-1; var locvar=top_value",   "while ( ++n < locvar )",   "" );
+
+add_test("whileup",    "0; var locvar=window",    "while ( ++n <= locvar.top_value )",  "" );
+add_test("whileup",    "-1; var locvar=window",   "while ( ++n != locvar.top_value )",  "" );
+add_test("whileup",    "-1; var locvar=window",   "while ( ++n < locvar.top_value )",   "" );
+
+
+add_test("whileup",    "0",    "while ( ++n <= 10000000 )",  "" );
+add_test("whileup",    "-1",   "while ( ++n != 10000000 )",  "" );
+add_test("whileup",    "-1",   "while ( ++n < 10000000 )",   "" );
+*/
+
+/*
+add_test("whileup",    "1",   "while ( n++ <= top_value )",  "" );
+add_test("whileup",    "0",   "while ( n++ != top_value )",  "" );
+add_test("whileup",    "0",   "while ( n++ < top_value )",   "" );
+
+add_test("whileup",    "1",   "while ( n <= top_value )",  "++n" );
+add_test("whileup",    "0",   "while ( n != top_value )",  "++n" );
+add_test("whileup",    "0",   "while ( n < top_value )",   "++n" );
+
+add_test("whileup",    "1",   "while ( n <= top_value )",  "n++" );
+add_test("whileup",    "0",   "while ( n != top_value )",  "n++" );
+add_test("whileup",    "0",   "while ( n < top_value )",   "n++" );
+
+add_test("whileup",    "1",   "while ( n <= top_value )",  "n+=1" );
+add_test("whileup",    "0",   "while ( n != top_value )",  "n+=1" );
+add_test("whileup",    "0",   "while ( n < top_value )",   "n+=1" );
+*/
+
+//add_test("whiledown post",        "top_value",   "while ( n-- > 0 )",  "console.log(n)" );
+//add_test("whiledown loop pre",    "top_value",   "while ( n > 0 )",    "console.log(n); --n" );
+//add_test("whiledown looppost",    "top_value",   "while ( n > 0 )",    "console.log(n); n--" );
+//add_test("whiledown looppost -=", "top_value",   "while ( n > 0 )",    "console.log(n); n-=1" );
+
+
+var while_up_tests =
+[
+    {  name:"while (0)(n < max) {++n}", times:[], average:0,
+        func:function()
+        {
+            var n = 0;
+            var test_ini = Date.now();
+
+            while ( n < top_value )
+            {
+                //console.log(n);
+                ++n;
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"while (0)(n < max) {n++}", times:[], average:0,
+        func:function()
+        {
+            var n = 0;
+            var test_ini = Date.now();
+
+            while ( n < top_value )
+            {
+                //console.log(n);
+                n++;
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"while (0)(n < max) {n+=1}", times:[], average:0,
+        func:function()
+        {
+            var n = 0;
+            var test_ini = Date.now();
+
+            while ( n < top_value )
+            {
+                //console.log(n);
+                n += 1;
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+];
+
+var up_tests =
+[
+    {   name:"dowhile (0 - UP) ++c != max", times:[], average:0,
+        func:function()
+        {
+            var counter = 0;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( ++counter != top_value );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (0 - UP) ++c < max", times:[], average:0,
+        func:function()
+        {
+            var counter = 0;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( ++counter < top_value );
+
+            return Date.now()-test_ini;
+        }
+    }
+
+    ,{  name:"for (-1 - UP) ++c != max", times:[], average:0,
+        func:function()
+        {
+            var counter = -1;
+            var test_ini = Date.now();
+
+            for (; ++counter != top_value;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (-1 - UP) ++c < max", times:[], average:0,
+        func:function()
+        {
+            var counter = -1;
+            var test_ini = Date.now();
+
+            for (; ++counter < top_value;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (0 - UP) ++c <= max", times:[], average:0,
+        func:function()
+        {
+            var counter = 0;
+            var test_ini = Date.now();
+
+            for (; ++counter <= top_value;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+
+    ,{  name:"for (0 - UP) c != max; ++c", times:[], average:0,
+        func:function()
+        {
+            var counter = 0;
+            var test_ini = Date.now();
+
+            for (; counter != top_value; ++counter) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (0 - UP) c < max; ++c", times:[], average:0,
+        func:function()
+        {
+            var counter = 0;
+            var test_ini = Date.now();
+
+            for (; counter < top_value;++counter) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+];
+
+var down_tests =
+[
+    {   name:"dowhile (DOWN) --c != 0", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter != 0 );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (DOWN) --c !== 0", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter !== 0 );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (DOWN) --c != zero", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter != zero );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (DOWN) --c !== zero", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter !== zero );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (DOWN) --c > 0", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter > 0 );
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"dowhile (DOWN) --c > zero", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            do
+            {
+                //console.log(counter);
+            } while ( --counter > zero );
+
+            return Date.now()-test_ini;
+        }
+    }
+
+    ,{  name:"for (DOWN) --c != -1", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; --counter != -1;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) --c > -1", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; --counter > -1;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) --c >= 0", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; --counter >= 0;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) --c != minusone", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var minusone = -1;
+            var test_ini = Date.now();
+
+            for (; --counter != minusone;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) --c > minusone", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var minusone = -1;
+            var test_ini = Date.now();
+
+            for (; --counter > minusone;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) --c >= zero", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            for (; --counter >= zero;) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+
+    ,{  name:"for (DOWN) c != 0; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; counter != 0; --counter)
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) c > 0; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; counter > 0; --counter)
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) c >= 1; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var test_ini = Date.now();
+
+            for (; counter >= 1; --counter)
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) c != zero; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            for (; counter != zero; --counter) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) c > zero; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var zero = 0;
+            var test_ini = Date.now();
+
+            for (; counter > zero; --counter) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+    ,{  name:"for (DOWN) c >= one; --c", times:[], average:0,
+        func:function()
+        {
+            var counter = top_value;
+            var one = 1;
+            var test_ini = Date.now();
+
+            for (; counter >= one; --counter) // otherwise does one less
+            {
+                //console.log(counter);
+            }
+
+            return Date.now()-test_ini;
+        }
+    }
+];
+
+//var tests = while_down_tests;
+
+function do_start()
+{
+    console.log("Will start in a second " + tests.length + " tests");
+
+    _canvas = document.getElementById("c");
+    ctx = _canvas.getContext("2d");
+
+//    testid = 0;
+    testtry = num_test_retry;
+
+    cur_test = num_test_retry;
+    window.setTimeout(test_runner, 10);
+
+//    console.log("Going to run test["+testid+"]: " + tests[testid].name );
+}
+
+function test_runner()
+{
+
+    var time = tests[testid].func();
+    if ( num_test_retry <= 10 )
+    {
+        tests[testid].times.push(time);
+    }
+    tests[testid].average += time;
+
+    if ( --testtry != 0 )
+    {
+        window.setTimeout(test_runner, _sleep_time);
+    }
+    else
+    {
+        tests[testid].average /= num_test_retry;
+        if ( num_test_retry <= 10 )
+        {
+            console.log("Test end["+testid+"]average["+tests[testid].average+"][" + tests[testid].name+"]: " + tests[testid].times.join());
+        }
+        else
+        {
+            console.log("Test end["+testid+"]average["+tests[testid].average+"][" + tests[testid].name+"]");
+        }
+
+        if ( ++testid < tests.length )
+        {
+            testtry = num_test_retry;
+//            console.log("Going to run test["+testid+"]: " + tests[testid].name );
+            window.setTimeout(test_runner, _sleep_time);
+        }
+    }
+
+}
+
+
+function test_baseline_for()
+{
+    var counter = top_value;
+    var test_ini = Date.now();
+
+    for ( var counter = top_value; --counter != 0; )
+    {
+
+    }
+
+    return Date.now()-test_ini;
+}
+
+function test_2()
+{
+    var counter = top_value;
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle="#bada55";
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+function test_3()
+{
+    var counter = top_value;
+    var col = "#a55bad";
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col;
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+function test_4()
+{
+    var counter = top_value;
+    var col = ["#a55bad"];
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col[0];
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+
+function test_5()
+{
+    var counter = top_value;
+    var col = ["#a55bad"];
+    var vax = 0;
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col[vax];
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+function test_2b()
+{
+    var counter = top_value;
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle="rgb(255,199,199)";
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+function test_3b()
+{
+    var counter = top_value;
+    var col = "rgb(255,199,199)";
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col;
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+function test_4b()
+{
+    var counter = top_value;
+    var col = ["rgb(255,199,199)"];
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col[0];
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+
+function test_5b()
+{
+    var counter = top_value;
+    var col = ["rgb(255,199,199)"];
+    var vax = 0;
+    var test_ini = Date.now();
+
+    do
+    {
+        ctx.fillStyle=col[vax];
+//        ctx.fillRect(32, 32, 16, 16);
+
+    } while ( --counter != 0 );
+
+    return Date.now()-test_ini;
+}
+
+
+
+
+</script>
+  </head>
+  <body onload="do_start()">
+  <canvas id="c" width="100" height="100"></canvas>
+  </body>
+</html>

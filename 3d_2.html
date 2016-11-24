@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>Canvas Speed</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+
+var _canvas = null;
+var ctx = null;
+
+var visual_area_width = 800;
+var visual_area_height = 600;
+
+var visual_area_max_x = visual_area_width - 1;
+var visual_area_max_y = visual_area_height- 1;
+
+var visual_area_half_width  = (visual_area_width /2) - 1;
+var visual_area_half_height = (visual_area_height/2) - 1;
+
+var screen_width = 640;
+var screen_height= 480;
+
+var screen_max_x = screen_width - 1;
+var screen_max_y = screen_height- 1;
+
+var x_ratio = screen_max_x / visual_area_max_x;
+var y_ratio = screen_max_y / visual_area_max_y;
+
+var sleep_time = 50;
+
+
+var m3dMath = {};
+
+m3dMath.vector_dot_product = function(a, b, res)
+{
+    return (a[0]*b[0]) + (a[1]*b[1]) + (a[2]*b[2]);
+};
+
+
+function Vector(x, y, z)
+{
+    this.x = x;
+    this.y = y;
+    this.z = z;
+}
+
+Vector.MidPoint = function(list)
+{
+    var new_vect = new Vector(list[0].x, list[0].y, list[0].z);
+    var n = list.length;
+    while ( --n )
+    {
+        new_vect.x += list[n].x;
+        new_vect.y += list[n].y;
+        new_vect.z += list[n].z;
+    }
+    
+    new_vect.x /= list.length;
+    new_vect.y /= list.length;
+    new_vect.z /= list.length;
+    return new_vect;
+};
+
+Vector.prototype.Clone = function()
+{
+    return new Vector(this.x, this.y, this.z);
+};
+
+Vector.prototype.sub = function(other)
+{
+    this.x -= other.x;
+    this.y -= other.y;
+    this.z -= other.z;
+};
+
+Vector.prototype.add = function(other)
+{
+    this.x += other.x;
+    this.y += other.y;
+    this.z += other.z;
+};
+
+Vector.DotProduct = function(v1, v2)
+{
+    var n = new Vector(0,0,0);
+    n.x =   (v1.y*v2.z) - (v1.z*v2.y);
+    n.y = -((v1.x*v2.z) - (v1.z*v2.x));
+    n.z =   (v1.x*v2.y) - (v1.y*v2.x);
+    return n;
+};
+
+Vector.prototype.normalize = function()
+{
+    var nx = this.x * this.x;
+    var ny = this.y * this.y;
+    var nz = this.z * this.z;
+    
+    var av = Math.sqrt(nx+ny+nz);
+    
+    this.x /= av;
+    this.y /= av;
+    this.z /= av;
+};
+
+Vector.prototype.toString = function()
+{
+    return "Vector["+this.x+","+this.y+","+this.z+"]";
+};
+
+var testid = true;
+
+var cub_data =
+{
+	vertex:
+	[
+		new Vector( 30, 30,-30),
+		new Vector( 30, 30, 30),
+		new Vector(-30, 30, 30),
+		new Vector(-30, 30,-30), // far face until here
+		new Vector( 30,-30,-30),
+		new Vector( 30,-30, 30),
+		new Vector(-30,-30, 30),
+		new Vector(-30,-30,-30) // near face
+	],
+	faces: // squares for now
+	[
+        [0, 3, 2, 1], // top cover
+        [4, 5, 6, 7], // bottom
+        [4, 0, 1, 5], // right side
+        [4, 7, 3, 0], // back side
+        [6, 2, 3, 7], // left side
+        [1, 2, 6, 5], // that front side
+	],
+	
+	normals: [] // to be overwrite later
+	
+};
+
+// to be run before rotation, that is on data object creation.
+// then the normal points are added to the data points and are calculated toguether later
+// can only be called once.
+function calc_faces_normal(obj)
+{
+    var num_vertex = obj.vertex.length;
+    var vertex = obj.vertex;
+    
+    var f = 0;
+    var max_f = obj.faces.length;
+    
+    obj.normals = [];
+    
+    for ( ; f < max_f; ++f )
+    {
+        var face = obj.faces[f];
+        var p1 = vertex[face[0]];
+        var p2 = vertex[face[1]];
+        var p3 = vertex[face[2]];
+        var p4 = vertex[face[3]];
+        
+        var mp = Vector.MidPoint([p1,p2,p3,p4]);
+//        [
+//            p1[0], p1[1], p1[2]	
+//            (p1.x+p2.x+p3.x+p4.x)/4,
+//            (p1.y+p2.y+p3.y+p4.y)/4,
+//            (p1.z+p2.z+p3.z+p4.z)/4,
+//        ];
+        
+        var v1 = p2.Clone();
+        v1.sub(mp);
+        
+        var v2 = p3.Clone();
+        v2.sub(mp);
+        
+//        var v1 = [p2[0]-mp[0], p2[1]-mp[1], p2[2]-mp[2]];
+//        var v2 = [p3[0]-mp[0], p3[1]-mp[1], p3[2]-mp[2]];
+        
+        var normal = Vector.DotProduct(v1, v2);
+//        [
+//              (v1[1]*v2[2]) - (v1[2]*v2[1]),
+//            -((v1[0]*v2[2]) - (v1[2]*v2[0])),
+//              (v1[0]*v2[1]) - (v1[1]*v2[0]),
+//        ];
+        
+        normal.normalize();
+        
+        console.log("Normal is: " + normal);
+        
+//        var nx = end_point[0]*end_point[0];
+//        var ny = end_point[1]*end_point[1];
+//        var nz = end_point[2]*end_point[2];
+        
+//        var nf = Math.sqrt(nx+ny+nz);
+        
+//        end_point[0]/=nf;
+//        end_point[1]/=nf;
+//        end_point[2]/=nf;
+        
+//        end_point[0]*=2;
+//        end_point[1]*=2;
+//        end_point[2]*=2;
+
+
+//        end_point.x*=mp.x;
+//        end_point.y*=mp.y;
+//        end_point.z*=mp.z;
+        
+        normal.x *= 10;
+        normal.y *= 10;
+        normal.z *= 10;
+        
+        
+        var end_point = mp.Clone();
+        end_point.add(normal);
+        
+        vertex.push(mp);
+        vertex.push(end_point);
+        
+        obj.normals[f] = [num_vertex++, num_vertex++];
+    }
+}
+
+calc_faces_normal(cub_data);
+
+var cub = 
+{
+	data: cub_data,
+	location: [ 30.0, 0.0, 600.0],
+	rotation: [ 0.0, 0.8, 6.0],
+	sin_rotation: [ 0.0, 0.0, 0.0],
+	cos_rotation: [ 0.0, 0.0, 0.0],
+	
+	rotated_vertex: [],
+	translated_vertex: [],
+	screen_pixel: [],
+	
+	visible_faces: [],
+	num_visible_faces: 0,
+	
+}
+
+var cub2 = 
+{
+	data: cub_data,
+	location: [ -60.0, -20.0, 800.0],
+	rotation: [ 0.0, 0.0, 0.0],
+	sin_rotation: [ 0.0, 0.0, 0.0],
+	cos_rotation: [ 0.0, 0.0, 0.0],
+	
+	rotated_vertex: [],
+	translated_vertex: [],
+	screen_pixel: [],
+	
+	visible_faces: [],
+	num_visible_faces: 0,
+	
+}
+
+
+function pre_calc_rotation(obj)
+{
+    var angles = obj.rotation;
+    var sins = obj.sin_rotation;
+    var coss = obj.cos_rotation;
+    sins[0] = Math.sin(angles[0]);
+    sins[1] = Math.sin(angles[1]);
+    sins[2] = Math.sin(angles[2]);
+    coss[0] = Math.cos(angles[0]);
+    coss[1] = Math.cos(angles[1]);
+    coss[2] = Math.cos(angles[2]);
+}
+
+function calc_rotation(obj)
+{
+    var sins = obj.sin_rotation;
+    var coss = obj.cos_rotation;
+    var orig_vertex = obj.data.vertex;
+    var rotated_vertex = obj.rotated_vertex;
+
+    var x = 0.0;
+    var y = 0.0;
+    var z = 0.0;
+    
+    var tx = 0.0; // TEMPORAL HOLDERS
+    var ty = 0.0;
+    var tz = 0.0;
+    
+    var len = orig_vertex.length;
+    
+    for ( var v = 0; v < len; ++v )
+    {
+        x = orig_vertex[v].x * (-1.0);
+        y = orig_vertex[v].y;
+        z = orig_vertex[v].z;
+            
+        //x = (-1.0) * x;
+        
+        tx = (coss[0] * x) - (sins[0] * z);
+        ty = (coss[1] * y) - (sins[1] * tx);
+        tz = (sins[0] * x) + (coss[0] * z);
+        
+        x = (coss[1] * tx) + (sins[1] * y);
+        y = (sins[2] * tz) - (coss[2] * ty);
+        z = (coss[2] * tz) - (sins[2] * ty);
+
+        rotated_vertex[v] = [x, y, z];
+    }
+}
+
+function calc_translation(obj)
+{
+    var orig_vertex = obj.rotated_vertex;
+    var translated_vertex = obj.translated_vertex;
+
+    var px = obj.location[0];
+    var py = obj.location[1];
+    var pz = obj.location[2];
+    
+    var len = orig_vertex.length;
+    
+    for ( var v = 0; v < len; ++v)
+    {
+        translated_vertex[v] = 
+        [
+            orig_vertex[v][0] + px,
+            orig_vertex[v][1] + py,
+            orig_vertex[v][2] + pz,
+        ];
+    }
+}
+
+// also gives the final screen pixel
+
+function calc_projection(obj)
+{
+    var vertex = obj.translated_vertex;
+    var screen_pixel = obj.screen_pixel;
+
+    var vertex_z = 0.0;
+    
+    var d = 1200;
+    var ver;
+
+    var len = vertex.length;
+    
+    for ( var v = 0; v < len; ++v)
+    {
+        ver = vertex[v]
+        vertex_z = ver[2];
+        screen_pixel[v] = 
+        [
+            (((ver[0] * d)/vertex_z)+visual_area_half_width )*x_ratio,
+            (((ver[1] * d)/vertex_z)+visual_area_half_height)*y_ratio
+        ];
+    }
+}
+
+function calc_visibility(obj)
+{
+    var faces = obj.data.faces;
+    var visible_faces = obj.visible_faces;
+    var num_visible_faces = 0;
+    var points = obj.translated_vertex;
+    
+    var face;
+    var max_f = faces.length;
+    for ( var f = 0; f < max_f; ++f )
+    {
+        face = faces[f];
+        var sp1 = ( points[face[0]][0] *
+                     ( (points[face[1]][1] * points[face[2]][2])
+                      -(points[face[2]][1] * points[face[1]][2])
+                      )
+                   ) * (-1.0);
+                        
+        var sp2 = points[face[1]][0] *
+                     ( (points[face[2]][1] * points[face[0]][2])
+                      -(points[face[0]][1] * points[face[2]][2])
+                      );
+
+        var sp3 = points[face[2]][0] *
+                     ( (points[face[0]][1] * points[face[1]][2])
+                      -(points[face[1]][1] * points[face[0]][2])
+                      );
+
+        var sp = sp1 - sp2 - sp3;
+        
+        if ( testid == false )
+            visible_faces[num_visible_faces++] = face;
+        else if ( sp > 0 )
+            visible_faces[num_visible_faces++] = face;
+    }
+    
+    obj.num_visible_faces = num_visible_faces;
+}
+
+function draw_faces(obj)
+{
+    var faces = obj.visible_faces;
+    var points = obj.screen_pixel;
+    
+    var segment = 0;
+    
+    var face;
+    var max_f = obj.num_visible_faces;
+    
+    var colors =
+    [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff",
+        "#ffff00",
+        "#707070",
+        "#70ff70",
+    ];
+    
+    
+    for ( var f = 0; f < max_f; ++f)
+    {
+        face = faces[f];
+        
+        ctx.beginPath();
+        ctx.strokeStyle = colors[f]; //"#00ffff";
+        
+        ctx.moveTo(points[obj.data.normals[f][0]][0], points[obj.data.normals[f][0]][1]);
+        ctx.lineTo(points[obj.data.normals[f][1]][0], points[obj.data.normals[f][1]][1]);
+        
+        ctx.stroke();  
+        
+        
+                
+//        ctx.beginPath();
+//        ctx.fillStyle = colors[f];
+        for ( segment = 0; segment < 4; ++segment )
+        {
+            ctx.beginPath();
+            ctx.strokeStyle = colors[f];
+            //if ( segment == 0 )
+                ctx.moveTo(points[face[segment]][0], points[face[segment]][1]);
+            ctx.lineTo(points[face[(segment+1)&3]][0], points[face[(segment+1)&3]][1])
+            ctx.stroke();        
+        }
+        
+//        ctx.fill();
+        
+      
+    }
+}
+
+var objs = [ cub, cub2 ];
+
+function timely_run()
+{
+    var num_n = objs.length;
+    
+    var fullCircle = 2 * Math.PI;
+    
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0,0,640,480);
+    
+    
+    for ( var n = objs.length; --n >= 0; )
+    {
+        var co = objs[n];
+        
+        for ( var r = 3; --r >= 0; )
+        {
+            co.rotation[r] += 0.02;
+            if ( co.rotation[r] >= fullCircle )
+                co.rotation[r] = 0.0;
+        }
+        
+        pre_calc_rotation(co);
+        calc_rotation(co);
+        calc_translation(co);
+        calc_projection(co);
+        
+        calc_visibility(co);
+
+        draw_faces(objs[n]);
+    }
+    
+    window.setTimeout(timely_run, sleep_time);
+}
+
+function do_start()
+{
+    _canvas = document.getElementById("c");
+    ctx = _canvas.getContext("2d");
+    
+    
+    window.setTimeout(timely_run, 200);
+    
+}
+
+
+
+
+
+
+</script>
+  </head>
+  <body onload="do_start()">
+  <canvas id="c" width="640" height="480"></canvas>
+  </body>
+</html>
