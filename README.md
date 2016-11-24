@@ -15,6 +15,7 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [trickytact-flash](https://github.com/aaronps/experiments-from-the-past/tree/trickytact-flash) actionscript3, 2009, reimplementation of [TrickyTacT](https://github.com/aaronps/TrickyTacT) in flash.
 * [thefactory-flash](https://github.com/aaronps/experiments-from-the-past/tree/thefactory-flash) actionscript3, 2009, unfinished game to move boxes using elevators, you need to control left and right hands separately.
 * [Coinporation](https://github.com/aaronps/experiments-from-the-past/tree/Coinporation) actionscript3, 2010, simple game to test Box2D, drop coins and add objects to bounce.
+* [js3d study](https://github.com/aaronps/experiments-from-the-past/tree/js3dstudy) javascript, 2010, experiment used to learn the 3d calculations rendering to canvas, include mini 3d engine.
 * [minsignal](https://github.com/aaronps/experiments-from-the-past/tree/minsignal) c++, 2011(maybe), very minimal callback/signal class
 * [linux-video-capture](https://github.com/aaronps/experiments-from-the-past/tree/linux-video-capture) c++, 2011, video capture and algorithms experiment
 * [simple-thread](https://github.com/aaronps/experiments-from-the-past/tree/simple-thread) c++, 2012, threads like in Java
