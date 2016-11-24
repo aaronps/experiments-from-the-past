@@ -11,6 +11,7 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [old-puzzle](https://github.com/aaronps/experiments-from-the-past/tree/old-puzzle) c, 2006, mini puzzle game using sdl
 * [3link](https://github.com/aaronps/experiments-from-the-past/tree/3link) [blitzmax](http://www.blitzbasic.com/Products/blitzmax.php), 2008, initial skeleton for 3link game
 * [fpong](https://github.com/aaronps/experiments-from-the-past/tree/fpong) actionscript3, 2009, simple pong game.
+* [eyebreaker-flash](https://github.com/aaronps/experiments-from-the-past/tree/eyebreaker-flash) actionscript3, 2009, unfinished simple game of find the dupes.
 * [trickytact-flash](https://github.com/aaronps/experiments-from-the-past/tree/trickytact-flash) actionscript3, 2009, reimplementation of [TrickyTacT](https://github.com/aaronps/TrickyTacT) in flash.
 * [minsignal](https://github.com/aaronps/experiments-from-the-past/tree/minsignal) c++, 2011(maybe), very minimal callback/signal class
 * [linux-video-capture](https://github.com/aaronps/experiments-from-the-past/tree/linux-video-capture) c++, 2011, video capture and algorithms experiment
