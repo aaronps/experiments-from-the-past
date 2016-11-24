@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script src="jquery-1.5.1.js"></script>
+        <script src="knockout-1.2.0.debug.js"></script>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        
+        <div id="mouseinfo">
+            <label>Screen Pos: <input data-bind="value: screenXY" readonly="readonly"/></label><br />
+            <label>Client Pos: <input data-bind="value: clientXY" readonly="readonly"/></label><br />
+            <label>Page Pos: <input data-bind="value: pageXY" readonly="readonly"/></label><br />
+        </div>
+        
+        <div id="mouse_mover" style="position: absolute; top: 0; display:none">
+            <img src="big_bg.png"/>
+            <img src="center.png" style="position: absolute; top: 48px; left: 48px;"/>
+        </div>
+        <script src="MouseMover.js"></script>
+        
+    </body>
+</html>
