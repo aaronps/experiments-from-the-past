@@ -15,6 +15,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[eyebreaker-flash](../../tree/eyebreaker-flash) |actionscript3|2009|unfinished simple game of find the dupes|
 |[trickytact-flash](../../tree/trickytact-flash) |actionscript3|2009|reimplementation of [TrickyTacT](https://github.com/aaronps/TrickyTacT) in flash|
 |[thefactory-flash](../../tree/thefactory-flash) |actionscript3|2009|unfinished game to move boxes using elevators, you need to control left and right hands separately|
+|[statsvn-generator](../../tree/statsvn-generator) |php,bash   |2009|Simple tool to regenerate [statsvn ](http://statsvn.org/) reports and see them over the browser|
 |[Coinporation](../../tree/Coinporation)         |actionscript3|2010|simple game to test Box2D, drop coins and add objects to bounce.|
 |[js3d study](../../tree/js3dstudy)              |javascript   |2010|experiment used to learn the 3d calculations rendering to canvas, include mini 3d engine.|
 |[jsmousemover](../../tree/jsmousemover)         |javascript   |2011|started as a joystick-like control for js but ended being a test of knockoutjs.|
@@ -30,7 +31,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[mysha1](../../tree/mysha1)                     |c++          |2012|functions to calculate sha1 and the websocket handshake thing, i think.|
 |[aujsc](../../tree/aujsc)                       |c++          |2012|another unfinished javascript compiler|
 |[audiolam](../../tree/audiolam)                 |c            |2012|audio loader and mixer, only load 8 bit wavs, mix them and play over sdl.|
-|[recttest](../../tree/recttest)                 |c++          |2013|class of rect classes|
+|[recttest](../../tree/recttest)                 |c++          |2013|test of rect classes|
 |[ccollections](../../tree/ccollections)         |c            |2014|simple ObjArray and PtrArray collections|
 |[simplelog](../../tree/simplelog)               |c            |2014|very simple log function for C, with nice dateformat|
 |[rtracker](../../tree/rtracker)                 |c            |2014|basic skeleton for tracking application, doesn't do anything.|
