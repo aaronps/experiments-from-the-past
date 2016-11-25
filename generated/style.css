@@ -1,0 +1,19 @@
+table, th, tr, td
+{
+        border: 1px solid black;
+}
+
+.greenbg
+{
+        background-color: #60f060;
+}
+
+.redbg
+{
+        background-color: red;
+}
+
+.yellowbg
+{
+        background-color: yellow;
+}
