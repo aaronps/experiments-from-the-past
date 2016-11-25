@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Floor map</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--        <script type="text/javascript" src="lib/jquery-1.6.1.js"></script>-->
+        <script type="text/javascript" src="floormap.js"></script>
+        <style type="text/css">
+            #contentdiv
+            {
+                position: relative;
+                width: 1025px;
+                height: 769px;
+            }
+
+            #contentdiv canvas
+            {
+                position: absolute;
+                width: 1024px;
+                height: 768px;
+                z-index: 1000;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body onload="init()">
+        <div>Floor map</div>
+        <div id="contentdiv">
+            <canvas id="drawcanvas" width="1024" height="768"></canvas>
+        </div>
+    </body>
+</html>
