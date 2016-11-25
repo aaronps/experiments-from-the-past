@@ -17,6 +17,7 @@ $ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --bra
 * [Coinporation](https://github.com/aaronps/experiments-from-the-past/tree/Coinporation) actionscript3, 2010, simple game to test Box2D, drop coins and add objects to bounce.
 * [js3d study](https://github.com/aaronps/experiments-from-the-past/tree/js3dstudy) javascript, 2010, experiment used to learn the 3d calculations rendering to canvas, include mini 3d engine.
 * [jsmousemover](https://github.com/aaronps/experiments-from-the-past/tree/jsmousemover) javascript, 2011, started as a joystick-like control for js but ended being a test of knockoutjs.
+* [jstranslate](https://github.com/aaronps/experiments-from-the-past/tree/jstranslate) javascript, 2011, demo to use different languages and change in realtime in SPA.
 * [minsignal](https://github.com/aaronps/experiments-from-the-past/tree/minsignal) c++, 2011(maybe), very minimal callback/signal class
 * [linux-video-capture](https://github.com/aaronps/experiments-from-the-past/tree/linux-video-capture) c++, 2011, video capture and algorithms experiment
 * [w3d](https://github.com/aaronps/experiments-from-the-past/tree/w3d) javascript, 2012, another experiment making a 3d engine in javascript.
