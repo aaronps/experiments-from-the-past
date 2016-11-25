@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavascriptProject</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" href="main.css" type="text/css"/>
+    
+    <script type="text/javascript" src="jquery-1.5.1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body onload="init()">
+      <h1>Do Something</h1>
+      <input type="button" value="English" onclick="set_english();"/>
+      <input type="button" value="English GB" onclick="set_englishgb();"/>
+      <input type="button" value="Spanish" onclick="set_spanish();"/>
+      <input type="button" value="Chinese" onclick="set_zh_CN();"/>
+      <input type="button" value="Arab" onclick="set_arabe();"/>
+
+      <p id="some_text" title="Bye world">Hello world</p>
+      <p id="some_more_text">Bye world</p>
+      <p class="translatable">Center</p>
+      <p class="translatable" title="Hour">Time to go</p>
+      
+      <input type="button" value="trans_button" class="translatable" title="Time to go"/>
+      
+      <select>
+          <option value="1" class="translatable">First</option>
+          <option value="2" class="translatable">Second</option>
+          <option value="3" class="translatable">Thirth</option>
+      </select>
+
+      <select>
+          <optgroup label="group1" class="translatable">
+            <option value="1" class="translatable">First</option>
+            <option value="2" class="translatable">Second</option>
+          </optgroup>
+          <optgroup label="group2" class="translatable">
+            <option value="3" class="translatable">Thirth</option>
+          </optgroup>
+      </select>
+
+      <table border="1">
+          <thead>
+              <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td class="translatable">First</td>
+                  <td class="translatable">Second</td>
+                  <td class="translatable">Thirth</td>
+              </tr>
+              <tr>
+                  <td class="translatable">group1</td>
+                  <td class="translatable">Center</td>
+                  <td class="translatable">group2</td>
+              </tr>
+          </tbody>
+      </table>
+      
+      
+  </body>
+</html>
