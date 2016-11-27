@@ -19,6 +19,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[Coinporation](../../tree/Coinporation)         |actionscript3|2010|simple game to test Box2D, drop coins and add objects to bounce.|
 |[js3d study](../../tree/js3dstudy)              |javascript   |2010|experiment used to learn the 3d calculations rendering to canvas, include mini 3d engine.|
 |[cppcall](../../tree/cppcall)                   |c++          |2010|tests to compare different implementations of signal/slot/callbacks|
+|[sdl-joystick](../../tree/sdl-joystick)         |c++          |2010|test using sdl1 joystick api|
 |[jsmousemover](../../tree/jsmousemover)         |javascript   |2011|started as a joystick-like control for js but ended being a test of knockoutjs.|
 |[jstranslate](../../tree/jstranslate)           |javascript   |2011|demo to use different languages and change in realtime in SPA.|
 |[jsgreenwave](../../tree/jsgreenwave)           |javascript   |2011|demo to draw on canvas and see traffic light cycles and speed lines.|
