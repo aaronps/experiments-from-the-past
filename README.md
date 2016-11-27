@@ -35,6 +35,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[ccollections](../../tree/ccollections)         |c            |2014|simple ObjArray and PtrArray collections|
 |[simplelog](../../tree/simplelog)               |c            |2014|very simple log function for C, with nice dateformat|
 |[rtracker](../../tree/rtracker)                 |c            |2014|basic skeleton for tracking application, doesn't do anything.|
+|[picsort](../../tree/picsort)                   |python       |2015|Tool to sort, copy and rename jpg files.|
 |[erl-dateformat](../../tree/erl-dateformat)     |erlang       |2015|Small test to check different date format methods in erlang.|
 |[logerl](../../tree/logerl)                     |erlang       |2015|Small logging application for erlang.|
 |[test-listen](../../tree/test-listen)           |erlang       |2016|Small test for creating a tcp listener project in erlang using OTP design.|
