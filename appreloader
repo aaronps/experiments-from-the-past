@@ -1,0 +1,63 @@
+#!/usr/bin/env escript
+%%
+%%! -hidden -sname appreloader
+main(Args) ->
+    run(Args).
+
+run([Node, "test"]) ->
+    StrNode = Node ++ "@" ++ domain_from_node(),
+    spawn(list_to_atom(StrNode),
+        fun() ->
+            group_leader(whereis(user), self()),
+            io:format("~nsrc\\sckfw.erl:28: Error some ~n")
+        end);
+
+run([Node, "selfupdate"]) ->
+    StrNode = Node ++ "@" ++ domain_from_node(),
+    io:format("Will update the own reloader!!!"),
+    spawn(list_to_atom(StrNode),
+        fun() ->
+            application:stop(appreloader),
+            case application:get_key(appreloader, modules) of
+                {ok, Modules} ->
+
+                    [ code:delete(M) || M <- Modules ],
+                    [ code:purge(M)  || M <- Modules ];
+
+                undefined -> ok
+            end,
+            application:unload(appreloader),
+            application:start(appreloader),
+            appreloader:log(application:get_key(appreloader, vsn))
+        end);
+
+run([Node, Operation, AppName]) ->
+    StrNode = Node ++ "@" ++ domain_from_node(),
+    io:format("I'm here, will connect to ~p and ~p ~p~n", [StrNode, Operation, AppName]),
+    spawn(list_to_atom(StrNode), appreloader, list_to_atom(Operation), [AppName]),
+    io:format("The end: ~p, but I am: ~p~n",[nodes(),domain_from_node()]);
+
+run(_) ->
+    io:format(
+"appreloader
+USAGE:
+    > appreloader Node selfupdate
+        - will unload appreloader and start it again on the Node. The
+        appreloader version on the path shall be already compiled.
+
+    > appreloader Node reload AppName
+        - will stop the application AppName, unload the modules referenced on
+        its application descriptor, make:all(), then start the application
+        again
+
+NOTE: all nodes are local.
+"),
+    halt(1).
+
+
+domain_from_node() ->
+    [ _ , Domain ] = string:tokens(atom_to_list(node()), "@"),
+    Domain.
+
+
+% string:tokens(atom_to_list(node()), "@")
