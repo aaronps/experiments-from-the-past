@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>src/A.hpp</itemPath>
+      <itemPath>src/B.hpp</itemPath>
+      <itemPath>Delegate.hpp</itemPath>
+      <itemPath>src/FastDelegate.h</itemPath>
+      <itemPath>src/FastDelegateBind.h</itemPath>
+      <itemPath>Signal.hpp</itemPath>
+      <itemPath>src/Test.hpp</itemPath>
+      <itemPath>src/Test_Boost.hpp</itemPath>
+      <itemPath>src/Test_FastDelegate.hpp</itemPath>
+      <itemPath>src/Test_SFSignal.hpp</itemPath>
+      <itemPath>src/Test_VirtualCall.hpp</itemPath>
+      <itemPath>customcallable.hpp</itemPath>
+      <itemPath>src/sfsigslot.hpp</itemPath>
+      <itemPath>src/virtualcall.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/Test_Boost.cpp</itemPath>
+      <itemPath>src/Test_FastDelegate.cpp</itemPath>
+      <itemPath>iterations.cpp</itemPath>
+      <itemPath>src/main.cpp</itemPath>
+      <itemPath>src/sfsigslot.cpp</itemPath>
+      <itemPath>src/virtualcall.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>2</developmentMode>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lboost_signals</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>6</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>0</developmentMode>
+          <commandLine>-mcpu=core2 -O4</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <commandLine>-lboost_signals</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release-asm" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>6</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>0</developmentMode>
+          <commandLine>-mcpu=core2 -O4 -S</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>1</activeConfTypeElem>
+        <activeConfIndexElem>1</activeConfIndexElem>
+    </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/krom/program/tests/cppcall/src/main.cpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/Test_SFSignal.hpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/sfsigslot.hpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/A.hpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/virtualcall.cpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/virtualcall.hpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/Test_VirtualCall.hpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/Test_FastDelegate.cpp</file>
+        <file>file:/home/krom/program/tests/cppcall/src/Test_FastDelegate.hpp</file>
+    </open-files>
+</project-private>
