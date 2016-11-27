@@ -33,6 +33,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[mysha1](../../tree/mysha1)                     |c++          |2012|functions to calculate sha1 and the websocket handshake thing, i think.|
 |[aujsc](../../tree/aujsc)                       |c++          |2012|another unfinished javascript compiler|
 |[audiolam](../../tree/audiolam)                 |c            |2012|audio loader and mixer, only load 8 bit wavs, mix them and play over sdl.|
+|[sov-hackedenum](../../tree/sov-hackedenum)     |c++          |2012|Some code I prepared to answer and [stackoverflow question](http://stackoverflow.com/questions/13097312/correctly-deal-with-byte-alignment-issues-between-16-bit-embeded-system-and-3/13097695#13097695) about packed structures|
 |[recttest](../../tree/recttest)                 |c++          |2013|test of rect classes|
 |[ccollections](../../tree/ccollections)         |c            |2014|simple ObjArray and PtrArray collections|
 |[simplelog](../../tree/simplelog)               |c            |2014|very simple log function for C, with nice dateformat|
