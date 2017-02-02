@@ -3,7 +3,7 @@ Repository holding my old experiments, multiple programming languages. *I haven'
 
 To clone a single project:
 ```shell
-$ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destination_folder_here>
+$ git clone https://github.com/aaronps/experiments-from-the-past --depth 1 --branch <branch_name_here> --single-branch <destination_folder_here>
 ```
 |Name|Language|Year|Description|
 |----|--------|----|-----------|
@@ -33,7 +33,7 @@ $ git clone ../.. --depth 1 --branch <branch_name_here> --single-branch <destina
 |[mysha1](../../tree/mysha1)                     |c++          |2012|functions to calculate sha1 and the websocket handshake thing, i think.|
 |[aujsc](../../tree/aujsc)                       |c++          |2012|another unfinished javascript compiler|
 |[audiolam](../../tree/audiolam)                 |c            |2012|audio loader and mixer, only load 8 bit wavs, mix them and play over sdl.|
-|[sov-hackedenum](../../tree/sov-hackedenum)     |c++          |2012|Some code I prepared to answer and [stackoverflow question](http://stackoverflow.com/questions/13097312/correctly-deal-with-byte-alignment-issues-between-16-bit-embeded-system-and-3/13097695#13097695) about packed structures|
+|[sov-hackedenum](../../tree/sov-hackedenum)     |c++          |2012|Some code I prepared to answer an [stackoverflow question](http://stackoverflow.com/questions/13097312/correctly-deal-with-byte-alignment-issues-between-16-bit-embeded-system-and-3/13097695#13097695) about packed structures|
 |[sov-action](../../tree/sov-action)             |c++          |2012|Code used to repply an [stackoverflow question](http://stackoverflow.com/questions/13109890/action-class-in-c-equivalent-to-c/13123299#13123299) about Action class in c++.|
 |[another-action](../../tree/another-action)     |c++          |2013|Action classes using typedefs|
 |[recttest](../../tree/recttest)                 |c++          |2013|test of rect classes|
